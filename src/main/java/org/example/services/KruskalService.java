@@ -30,7 +30,11 @@ public class KruskalService {
             while (true) {
                 int choice = menu.chooseMenuFunction();
                 switch (choice) {
-                    case 1 -> sortEdgesByWeight();
+                    case 1 -> {
+                        sortEdgesByWeight();
+                        kruskalRouting.runKruskalAlgorithm(nodes, edges);
+                    }
+
                     case 9 -> {
                         log.info(ConsoleColor.ANSI_YELLOW + "Now leaving..." + ConsoleColor.ANSI_RESET);
                         log.info(ConsoleColor.ANSI_YELLOW + "Program finished!" + ConsoleColor.ANSI_RESET);
@@ -42,7 +46,6 @@ public class KruskalService {
 
                 }
 
-                kruskalRouting.runKruskalAlgorithm(nodes, edges);
             }
         } catch (Exception e) {
             log.error(e.getMessage());

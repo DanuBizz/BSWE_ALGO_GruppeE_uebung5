@@ -44,7 +44,8 @@ public class KruskalRouting {
      *
      * @param nodes The number of nodes in the graph.
      */
-    private void generateSubsets(int nodes) {
+    public void generateSubsets(int nodes) {
+        edgeSubSets = new EdgeSubSet[nodes];
         for (int i = 0; i < nodes; i++) {
             edgeSubSets[i] = new EdgeSubSet((char) ('A' + i), 0);
         }
@@ -55,7 +56,7 @@ public class KruskalRouting {
      *
      * @param edges The list of edges in the graph.
      */
-    private void processEdgesForMST(List<Edge> edges) {
+    public void processEdgesForMST(List<Edge> edges) {
         while (numberOfEdges < edgeSubSets.length - 1) {
             Edge nextEdge = edges.get(counter);
             char x = findRoot(edgeSubSets, nextEdge.source);
@@ -120,5 +121,30 @@ public class KruskalRouting {
         }
         System.out.println("Total cost of MST: " + ConsoleColor.ANSI_GREEN + minCost + ConsoleColor.ANSI_RESET);
     }
+
+
+    //
+    /**
+     * This method is intended for testing purposes.
+     *
+     * @return The array of edges in the MST.
+     */
+    public Edge[] getResults() {
+        return results;
+    }
+
+    /**
+     * This method is intended for testing purposes.
+     *
+     * @return The total cost of the MST.
+     */
+    public int getTotalCost() {
+        int minCost = 0;
+        for (int i = 0; i < numberOfEdges; i++) {
+            minCost += results[i].weight;
+        }
+        return minCost;
+    }
+
 }
 

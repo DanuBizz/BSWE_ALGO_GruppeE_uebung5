@@ -40,7 +40,7 @@ public class Menu {
         return choice;
     }
 
-    private String printMenu() {
+    public String printMenu() {
         return """
                 🌍🗺️🌍🗺️🌍🗺️🌍🗺️🌍🗺️🌍🗺️🌍🗺️🌍🗺️🌍🗺️🌍
                 🌍                                       🌍
